@@ -44,6 +44,8 @@ model Page {
 
   user   User   @relation(fields: [userId], references: [id])
   userId String
+
+  @@index([searchVector], type: Gin) // explicitly let prisma know to make the GIN index or else it won't know, due to custom type
 }
 
 model Session {
